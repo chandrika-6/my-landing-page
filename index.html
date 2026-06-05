@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Little Dream Toys – Premium Baby Toy Showroom</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:   #FF6B9D;
+      --yellow: #FFD166;
+      --mint:   #06D6A0;
+      --sky:    #4CC9F0;
+      --purple: #9B5DE5;
+      --peach:  #FFB347;
+      --bg:     #FFFBF7;
+      --card:   #FFFFFF;
+      --text:   #2D2D2D;
+      --muted:  #7A7A8C;
+      --border: #F0E8FF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 99;
+      background: #fff;
+      border-bottom: 2px solid #FFD16633;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 68px;
+    }
+
+    .logo {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.7rem; font-weight: 800;
+      color: var(--pink); letter-spacing: -0.5px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .logo-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--yellow); display: inline-block; }
+
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+    nav a:hover { color: var(--pink); }
+
+    .nav-btn {
+      background: var(--pink); color: #fff !important;
+      padding: 8px 20px; border-radius: 999px; font-weight: 700 !important;
+      font-size: 0.88rem !important; transition: opacity 0.2s !important;
+    }
+    .nav-btn:hover { opacity: 0.85 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 5rem 4rem 4rem;
+      max-width: 1100px; margin: 0 auto;
+      gap: 3rem; flex-wrap: wrap;
+    }
+
+    .hero-left { flex: 1; min-width: 280px; }
+
+    .hero-badge {
+      display: inline-block;
+      background: #FFD16630; color: #B8860B;
+      font-weight: 700; font-size: 0.75rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 999px;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800; line-height: 1.15;
+      color: var(--text); margin-bottom: 1.2rem;
+    }
+
+    h1 em { color: var(--pink); font-style: normal; }
+    h1 span { color: var(--purple); }
+
+    .hero-desc {
+      color: var(--muted); font-size: 1.05rem; line-height: 1.8;
+      max-width: 460px; margin-bottom: 2rem;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 28px; border-radius: 999px;
+      font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.95rem;
+      text-decoration: none; cursor: pointer; border: none; transition: all 0.2s;
+    }
+
+    .btn-primary { background: var(--pink); color: #fff; }
+    .btn-primary:hover { background: #ff4d8b; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent; color: var(--purple);
+      border: 2px solid var(--purple);
+    }
+    .btn-outline:hover { background: var(--purple); color: #fff; transform: translateY(-2px); }
+
+    /* HERO ILLUSTRATION AREA */
+    .hero-right {
+      flex: 1; min-width: 280px; max-width: 440px;
+      background: #FFF0F7;
+      border-radius: 32px;
+      padding: 2.5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; position: relative;
+    }
+
+    .toy-bubble {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.25rem;
+      text-align: center;
+      border: 2px solid #FFD16650;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      transition: transform 0.2s;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .toy-bubble:hover { transform: scale(1.05); }
+    .toy-bubble:nth-child(2) { animation-delay: 0.5s; }
+    .toy-bubble:nth-child(3) { animation-delay: 1s; }
+    .toy-bubble:nth-child(4) { animation-delay: 1.5s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-6px); }
+    }
+
+    .toy-icon { font-size: 2.8rem; line-height: 1; }
+    .toy-label { font-size: 0.78rem; font-weight: 700; color: var(--muted); }
+    .toy-price { font-size: 0.95rem; font-weight: 800; color: var(--pink); }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--purple);
+      color: #fff;
+      display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+      padding: 1.4rem 2rem;
+    }
+
+    .trust-item { text-align: center; }
+    .trust-num {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.8rem; font-weight: 800; line-height: 1;
+    }
+    .trust-label { font-size: 0.78rem; opacity: 0.8; margin-top: 2px; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+    .section-head { text-align: center; margin-bottom: 3rem; }
+
+    .section-tag {
+      display: inline-block;
+      background: #FFD16630; color: #9B6A00;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 4px 14px; border-radius: 999px;
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: 'Baloo 2', cursive;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800; color: var(--text);
+    }
+
+    h2 .pink { color: var(--pink); }
+    h2 .purple { color: var(--purple); }
+
+    .section-sub { color: var(--muted); margin-top: 0.5rem; font-size: 1rem; }
+
+    /* ── CATEGORIES ── */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .cat-card {
+      background: var(--card);
+      border: 2px solid transparent;
+      border-radius: 20px; padding: 1.5rem 1rem;
+      text-align: center; cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .cat-card:hover {
+      border-color: var(--pink);
+      transform: translateY(-4px);
+    }
+
+    .cat-card.pink-c   { background: #FFF0F7; }
+    .cat-card.yellow-c { background: #FFFBEA; }
+    .cat-card.mint-c   { background: #F0FDF9; }
+    .cat-card.sky-c    { background: #F0F9FF; }
+    .cat-card.purple-c { background: #F5F0FF; }
+    .cat-card.peach-c  { background: #FFF4EA; }
+
+    .cat-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .cat-name { font-weight: 700; font-size: 0.9rem; color: var(--text); }
+    .cat-count { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── PRODUCTS ── */
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .prod-card {
+      background: var(--card);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid #F0E8FF;
+      transition: all 0.25s;
+    }
+
+    .prod-card:hover { transform: translateY(-6px); border-color: var(--pink); }
+
+    .prod-img {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem;
+    }
+
+    .prod-body { padding: 1.25rem; }
+
+    .prod-age {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--purple); margin-bottom: 4px;
+    }
+
+    .prod-name { font-weight: 800; font-size: 1rem; margin-bottom: 4px; color: var(--text); }
+    .prod-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; margin-bottom: 1rem; }
+
+    .prod-footer { display: flex; align-items: center; justify-content: space-between; }
+
+    .prod-price { font-family: 'Baloo 2', cursive; font-size: 1.3rem; font-weight: 800; color: var(--pink); }
+
+    .prod-btn {
+      background: var(--pink); color: #fff;
+      border: none; border-radius: 999px;
+      padding: 7px 18px; font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 0.82rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+
+    .prod-btn:hover { background: #ff4d8b; transform: scale(1.05); }
+
+    .stars { color: var(--yellow); font-size: 0.85rem; margin-bottom: 2px; }
+
+    /* ── WHY US ── */
+    .why-bg {
+      background: linear-gradient(135deg, #FFF0F7 0%, #F5F0FF 100%);
+      padding: 5rem 2rem;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px; margin: 2rem auto 0;
+    }
+
+    .why-card {
+      background: #fff; border-radius: 20px;
+      padding: 1.75rem 1.5rem;
+      border: 2px solid #FFD16630;
+      text-align: center;
+    }
+
+    .why-icon {
+      width: 64px; height: 64px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; margin: 0 auto 1rem;
+    }
+
+    .why-title { font-weight: 800; font-size: 1rem; margin-bottom: 0.5rem; }
+    .why-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .testi-card {
+      background: var(--card); border-radius: 20px;
+      padding: 1.5rem; border: 2px solid #F0E8FF;
+    }
+
+    .testi-text { font-size: 0.9rem; color: var(--text); line-height: 1.7; margin-bottom: 1rem; font-style: italic; }
+
+    .testi-author { display: flex; align-items: center; gap: 10px; }
+
+    .testi-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.9rem; color: #fff;
+    }
+
+    .testi-name { font-weight: 700; font-size: 0.88rem; }
+    .testi-role { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: var(--pink);
+      color: #fff; text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Baloo 2', cursive;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800; color: #fff; margin-bottom: 1rem;
+    }
+
+    .cta-banner p { opacity: 0.9; margin-bottom: 2rem; font-size: 1.05rem; }
+
+    .btn-white {
+      background: #fff; color: var(--pink);
+      padding: 12px 32px; border-radius: 999px;
+      font-weight: 800; font-size: 1rem;
+      text-decoration: none; display: inline-block;
+      transition: all 0.2s;
+    }
+    .btn-white:hover { transform: scale(1.05); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #2D2D2D; color: #ccc;
+      padding: 3rem 2rem 1.5rem;
+    }
+
+    .footer-top {
+      display: flex; flex-wrap: wrap; gap: 3rem;
+      max-width: 1100px; margin: 0 auto 2rem;
+      justify-content: space-between;
+    }
+
+    .footer-brand .logo { color: var(--pink); margin-bottom: 0.75rem; }
+    .footer-brand p { font-size: 0.85rem; color: #aaa; max-width: 240px; line-height: 1.7; }
+
+    .footer-col h4 {
+      font-family: 'Baloo 2', cursive;
+      color: #fff; font-size: 1rem; margin-bottom: 0.75rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .footer-col a { color: #aaa; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--pink); }
+
+    .footer-bottom {
+      border-top: 1px solid #444; padding-top: 1.25rem;
+      text-align: center; font-size: 0.8rem; color: #888;
+      max-width: 1100px; margin: 0 auto;
+    }
+
+    .footer-bottom span { color: var(--pink); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 640px) {
+      nav ul { display: none; }
+      .hero { padding: 3rem 1.5rem; }
+      .trust-bar { gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <span class="logo-dot"></span> Little Dream Toys
+  </div>
+  <ul>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact" class="nav-btn">Visit Showroom</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">✨ New 2025 Collection Arrived!</div>
+    <h1>
+      Where <em>Little Ones</em><br>
+      <span>Giggle &amp; Grow</span>
+    </h1>
+    <p class="hero-desc">
+      Premium, safe, and joyful toys handpicked for babies and toddlers aged 0–5 years.
+      Every toy sparks curiosity, creativity, and endless smiles.
+    </p>
+    <div class="hero-btns">
+      <a href="#products" class="btn btn-primary">Shop Now</a>
+      <a href="#why" class="btn btn-outline">Learn More</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="toy-bubble">
+      <div class="toy-icon">🧸</div>
+      <div class="toy-label">Soft Toys</div>
+      <div class="toy-price">from ₹100</div>
+    </div>
+    <div class="toy-bubble">
+      <div class="toy-icon">🎠</div>
+      <div class="toy-label">Mobiles</div>
+      <div class="toy-price">from ₹350</div>
+    </div>
+    <div class="toy-bubble">
+      <div class="toy-icon">🎨</div>
+      <div class="toy-label">Art Sets</div>
+      <div class="toy-price">from ₹250</div>
+    </div>
+    <div class="toy-bubble">
+      <div class="toy-icon">🎲</div>
+      <div class="toy-label">Board Games</div>
+      <div class="toy-price">from ₹450</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-num">5,000+</div>
+    <div class="trust-label">Happy Families</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">300+</div>
+    <div class="trust-label">Toy Varieties</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">100%</div>
+    <div class="trust-label">Safety Certified</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num">4.9★</div>
+    <div class="trust-label">Average Rating</div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="section reveal" id="categories">
+  <div class="section-head">
+    <div class="section-tag">Browse By Type</div>
+    <h2>Shop by <span class="pink">Category</span></h2>
+    <p class="section-sub">Find the perfect toy for every little milestone.</p>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card pink-c">
+      <div class="cat-icon">🧸</div>
+      <div class="cat-name">Soft &amp; Plush</div>
+      <div class="cat-count">48 items</div>
+    </div>
+    <div class="cat-card yellow-c">
+      <div class="cat-icon">🧩</div>
+      <div class="cat-name">Puzzles</div>
+      <div class="cat-count">35 items</div>
+    </div>
+    <div class="cat-card mint-c">
+      <div class="cat-icon">🎵</div>
+      <div class="cat-name">Musical Toys</div>
+      <div class="cat-count">29 items</div>
+    </div>
+    <div class="cat-card sky-c">
+      <div class="cat-icon">🚂</div>
+      <div class="cat-name">Vehicles</div>
+      <div class="cat-count">42 items</div>
+    </div>
+    <div class="cat-card purple-c">
+      <div class="cat-icon">🏠</div>
+      <div class="cat-name">Playsets</div>
+      <div class="cat-count">31 items</div>
+    </div>
+    <div class="cat-card peach-c">
+      <div class="cat-icon">🎨</div>
+      <div class="cat-name">Art &amp; Craft</div>
+      <div class="cat-count">38 items</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section reveal" id="products">
+  <div class="section-head">
+    <div class="section-tag">Best Sellers</div>
+    <h2>Featured <span class="purple">Products</span></h2>
+    <p class="section-sub">Loved by babies, trusted by parents.</p>
+  </div>
+  <div class="prod-grid">
+
+    <div class="prod-card">
+      <div class="prod-img" style="background:#FFF0F7;">🐻</div>
+      <div class="prod-body">
+        <div class="prod-age">0–12 months</div>
+        <div class="stars">★★★★★</div>
+        <div class="prod-name">Snuggle Bear Plush</div>
+        <div class="prod-desc">Ultra-soft, hypoallergenic bear with soothing music. Baby's first best friend.</div>
+        <div class="prod-footer">
+          <div class="prod-price">₹499</div>
+          <button class="prod-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img" style="background:#FFFBEA;">🎠</div>
+      <div class="prod-body">
+        <div class="prod-age">0–6 months</div>
+        <div class="stars">★★★★★</div>
+        <div class="prod-name">Rainbow Crib Mobile</div>
+        <div class="prod-desc">Rotating rainbow mobile with gentle lullabies and soft pastel characters.</div>
+        <div class="prod-footer">
+          <div class="prod-price">₹899</div>
+          <button class="prod-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img" style="background:#F0FDF9;">🧩</div>
+      <div class="prod-body">
+        <div class="prod-age">2–4 years</div>
+        <div class="stars">★★★★☆</div>
+        <div class="prod-name">Big Piece Shape Puzzle</div>
+        <div class="prod-desc">Chunky wooden puzzle with bright colours. Builds motor skills and shape recognition.</div>
+        <div class="prod-footer">
+          <div class="prod-price">₹299</div>
+          <button class="prod-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img" style="background:#F5F0FF;">🎹</div>
+      <div class="prod-body">
+        <div class="prod-age">1–3 years</div>
+        <div class="stars">★★★★★</div>
+        <div class="prod-name">Mini Piano Keyboard</div>
+        <div class="prod-desc">8-key colourful piano with animal sounds and nursery rhymes for budding musicians.</div>
+        <div class="prod-footer">
+          <div class="prod-price">₹599</div>
+          <button class="prod-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img" style="background:#F0F9FF;">🚂</div>
+      <div class="prod-body">
+        <div class="prod-age">3–5 years</div>
+        <div class="stars">★★★★★</div>
+        <div class="prod-name">Wooden Train Set</div>
+        <div class="prod-desc">32-piece magnetic wooden train set with tunnels, bridges, and station. Hours of fun.</div>
+        <div class="prod-footer">
+          <div class="prod-price">₹999</div>
+          <button class="prod-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-img" style="background:#FFF4EA;">🎨</div>
+      <div class="prod-body">
+        <div class="prod-age">2–5 years</div>
+        <div class="stars">★★★★★</div>
+        <div class="prod-name">Washable Finger Paint Kit</div>
+        <div class="prod-desc">10 non-toxic, washable colours with apron and paper pad. Safe mess, maximum creativity.</div>
+        <div class="prod-footer">
+          <div class="prod-price">₹399</div>
+          <button class="prod-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY US -->
+<div class="why-bg reveal" id="why">
+  <div style="max-width:1100px;margin:0 auto;padding:0 2rem;">
+    <div class="section-head">
+      <div class="section-tag">Our Promise</div>
+      <h2>Why Parents <span class="pink">Love Us</span></h2>
+      <p class="section-sub">We put safety, quality, and joy above everything else.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon" style="background:#FFF0F7;">🛡️</div>
+        <div class="why-title">100% Safety Certified</div>
+        <div class="why-desc">Every toy meets or exceeds EN71, ASTM, and BIS safety standards. Tested by experts before it reaches your child.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#F0FDF9;">🌿</div>
+        <div class="why-title">Eco-Friendly Materials</div>
+        <div class="why-desc">We use BPA-free, non-toxic, sustainably sourced materials. Good for babies, good for the planet.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#FFFBEA;">🎁</div>
+        <div class="why-title">Free Gift Wrapping</div>
+        <div class="why-desc">Every order comes beautifully wrapped with a hand-written gift card. Perfect for baby showers and birthdays.</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon" style="background:#F5F0FF;">🚚</div>
+        <div class="why-title">Fast Free Delivery</div>
+        <div class="why-desc">Free shipping on orders over ₹500. Same-day dispatch on orders placed before 2 PM. Track live.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section reveal">
+  <div class="section-head">
+    <div class="section-tag">Parent Reviews</div>
+    <h2>What <span class="purple">Moms &amp; Dads</span> Say</h2>
+    <p class="section-sub">Real stories from real happy families.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"My daughter hasn't put down her Snuggle Bear since Christmas morning. The quality is incredible and it's so soft — I love it as much as she does!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:var(--pink);">PR</div>
+        <div>
+          <div class="testi-name">Priya R.</div>
+          <div class="testi-role">Mom of a 14-month-old</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"The wooden train set kept my son busy for hours. Brilliant quality, no sharp edges, and it arrived gift-wrapped beautifully. Will definitely order again!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:var(--purple);">AM</div>
+        <div>
+          <div class="testi-name">Arjun M.</div>
+          <div class="testi-role">Dad of a 4-year-old</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Ordered the finger paint kit for my twins and it was a hit! Washes off everything easily. Little Dream Toys has become our go-to toy store. Highly recommended."</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:var(--mint);">SL</div>
+        <div>
+          <div class="testi-name">Sarah L.</div>
+          <div class="testi-role">Mom of 3-year-old twins</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" id="contact">
+  <h2>Visit Our Showroom Today! 🎉</h2>
+  <p>Come in and let your little one pick their favourite. We'd love to meet your family.</p>
+  <a href="tel:+11234567890" class="btn-white">📞 Call Us: (123) 456-7890</a>
+  <p style="margin-top:1.25rem;opacity:0.85;font-size:0.9rem;">
+    📍 123 Toy Lane, Happyville &nbsp;|&nbsp; Mon–Sat 9am–7pm &nbsp;|&nbsp; Sun 10am–5pm
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">🌟 Little Dream Toys</div>
+      <p>Premium baby and toddler toys that spark joy, creativity, and learning — safely.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#categories">Soft Toys</a></li>
+        <li><a href="#categories">Puzzles</a></li>
+        <li><a href="#categories">Musical Toys</a></li>
+        <li><a href="#categories">Art &amp; Craft</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="#">📘 Facebook</a></li>
+        <li><a href="#">📸 Instagram</a></li>
+        <li><a href="#">▶️ YouTube</a></li>
+        <li><a href="#">📌 Pinterest</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 <span>Little Dream Toys</span>. All rights reserved. Made with ❤️ for little ones.
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+  document.querySelectorAll('.prod-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const orig = this.textContent;
+      this.textContent = '✓ Added!';
+      this.style.background = '#06D6A0';
+      setTimeout(() => {
+        this.textContent = orig;
+        this.style.background = '';
+      }, 1500);
+    });
+  });
+</script>
+
+</body>
+</html>
